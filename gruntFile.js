@@ -95,5 +95,5 @@ module.exports = function(grunt) {
   /**
    * Use to run karma test, format all cient and server side javascripts files,
    */
-  grunt.registerTask('dev', "Starts server and client - for development", ['jsbeautifier', 'jshint', 'express:dev', 'open:dev', 'keepalive']);
+  grunt.registerTask('default', "Starts server and client - for development", ['jsbeautifier', 'jshint', 'express:dev', 'open:dev', 'keepalive']);
 };
