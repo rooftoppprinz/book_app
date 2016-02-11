@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  nav.navbar.navbar-inverse.navbar-static-top(role='navigation')
+      .navbar-header
+        img.img-responsive(style='float: left; margin-left: 20px; margin-top: 10px; margin-right: -13px; height: 35px;', src='/libs/flat-ui/img/icons/svg/book.svg', alt='Clipboard')
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collpase-01')
+          span.sr-only Toggle navigation
+        a.navbar-brand(href='#') Book-ish
+      form.navbar-form.navbar-left(action='#', role='search')
+        .input-group.focus
+          input#navbarInput-01.form-control(style='width: 50em;', type='search', placeholder='Search for book here')
+          span.input-group-btn
+            button.btn(type='submit', data-toggle='collapse', data-target='#search', aria-expanded='false', aria-controls='search')
+              span.fui-search
+        button.btn.btn-default(style='margin-left: 5px;',type='button', data-toggle='collapse', data-target='#advSearch', aria-expanded='false', aria-controls='advSearch', data-placement='right', title='Advanced Search')
+          span.fui-plus
+      a(href='/login')
+        button.navbar-btn.navbar-right.btn.btn-default(type="button",style='margin-right: 5px;') Login as admin

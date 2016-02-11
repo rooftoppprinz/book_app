@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  if (!user)
+    .container.home-page(style='margin-top: 20px;')
+      .jumbotron
+        h1 Hello, Welcome to Book-ish
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rhoncus nibh at tortor commodo dictum. Duis vel magna nulla. Proin vestibulum viverra nulla, non rutrum augue vulputate eget. In efficitur felis eget euismod pellentesque. Nulla in blandit risus. Nam maximus, velit sit amet venenatis volutpat, neque arcu posuere turpis, id rutrum massa libero ut urna. Integer rhoncus purus vel urna ultrices, quis porta lacus pharetra.
+        p Aenean fringilla sit amet quam id sodales. Pellentesque dignissim blandit hendrerit. Praesent aliquet sollicitudin mi, quis scelerisque tortor rhoncus ut. Quisque eget mattis nisl, et vehicula est. Quisque ut nisi ut lectus dictum facilisis quis a lectus. In lobortis enim nibh, eget mattis metus suscipit id. Curabitur porta diam non erat ultrices ornare. Nullam hendrerit orci at leo consequat, at porttitor tellus dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec nec sem mauris.
+          br
+          a.btn.btn-primary.btn-lg(href='/guest', role='button') Get Started
+  if (user)
+    nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      .navbar-header(style='margin-right: 3px;')
+        img.img-responsive(style='float: left; margin-left: 20px; margin-top: 10px; margin-right: -13px; height: 35px;', src='/libs/flat-ui/img/icons/svg/book.svg', alt='Clipboard')
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collpase-01')
+          span.sr-only Toggle navigation
+        a.navbar-brand(href='#') Book-ish
+      #navbar-collapse.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-left
+          li.dropdown
+          li.dropdown
+            a.dropdown-toggle(href='/add') Add Book
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown') Edit Book
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown') Delete Book
+        ul.nav.navbar-nav.navbar-right(style='margin-right: 5px;')
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              span.fui-user 
+              | #{user.username}
+              b.caret
+            span.dropdown-arrow
+            ul.dropdown-menu
+              li
+                a(href='/logout') 
+                  span.fui-exit 
+                  | Logout
+          li.dropdown

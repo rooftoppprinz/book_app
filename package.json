@@ -1,0 +1,39 @@
+{
+  "name": "libsys",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "postinstall": "bower install"
+  },
+  "author": "Test Author",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.10.2",
+    "chai": "~1.8.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.3.3",
+    "debug": "^2.1.1",
+    "express": "^4.11.1",
+    "express-session": "^1.10.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.12.0",
+    "grunt-express-server": "^0.5.1",
+    "grunt-jsbeautifier": "^0.2.10",
+    "grunt-keepalive": "0.0.1",
+    "grunt-open": "^0.2.3",
+    "jade": "^1.9.1",
+    "mkdirp": "^0.5.1",
+    "mocha": "~1.14.0",
+    "mongoose": "^4.4.2",
+    "morgan": "^1.5.1",
+    "multer": "^1.1.0",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^1.0.0",
+    "random-string": "^0.1.2",
+    "serve-favicon": "^2.2.0",
+    "should": "~2.1.0"
+  }
+}
