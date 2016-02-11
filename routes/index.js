@@ -82,6 +82,7 @@ router.post('/upload', function(req, res) {
     }
     console.log(req.body)
     res.render('add', {
+      user: req.user,
       message: "Successfully saved book."
     });
   });
