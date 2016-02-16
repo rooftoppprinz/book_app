@@ -26,14 +26,21 @@
     "jade": "^1.9.1",
     "mkdirp": "^0.5.1",
     "mocha": "~1.14.0",
+    "mongodb": "^2.1.7",
     "mongoose": "^4.4.2",
     "morgan": "^1.5.1",
     "multer": "^1.1.0",
+    "open": "0.0.5",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^1.0.0",
+    "pdfjs-dist": "^1.4.76",
     "random-string": "^0.1.2",
     "serve-favicon": "^2.2.0",
     "should": "~2.1.0"
+  },
+  "devDependencies": {
+    "grunt-nodemon": "^0.4.1",
+    "node-ensure": "0.0.0"
   }
 }

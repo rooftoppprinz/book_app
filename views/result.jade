@@ -1,0 +1,127 @@
+extends layout
+
+block content
+  nav.navbar.navbar-inverse.navbar-static-top(role='navigation')
+      .navbar-header
+        img.img-responsive(style='float: left; margin-left: 20px; margin-top: 10px; margin-right: -13px; height: 35px;', src='/libs/flat-ui/img/icons/svg/book.svg', alt='Clipboard')
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collpase-01')
+          span.sr-only Toggle navigation
+      a.navbar-brand(href='/') Book-ish
+      a(href='/login')
+        button.navbar-btn.navbar-right.btn.btn-default(type="button",style='margin-right: 5px;') Login as admin
+  .container(style='margin-top: 15px;')
+    img.img-responsive(style='float: left; margin-right: 5px; height: 35px;', src='/libs/flat-ui/img/icons/svg/clipboard.svg', alt='Clipboard')
+    h4(style='margin-top: 5px;') Search Book
+    p.help-block Fill in to search for book.
+    form(role='form', action="/search-book",method="post")
+      .form-group
+        .row
+          .col-md-10
+            input.form-control(type='text', name="searchBar", placeholder='Search', required)
+          .col-md-2
+            button.btn.btn-primary.btn-block(type="submit") Search
+    div
+        // Nav tabs
+        ul.nav.nav-tabs(role='tablist')
+          li.active(role='presentation')
+            a(href='#home', aria-controls='home', role='tab', data-toggle='tab') Content
+          li(role='presentation')
+            a(href='#profile', aria-controls='profile', role='tab', data-toggle='tab') Author
+          li(role='presentation')
+            a(href='#messages', aria-controls='messages', role='tab', data-toggle='tab') Title
+          li(role='presentation')
+            a(href='#settings', aria-controls='settings', role='tab', data-toggle='tab') Subject
+        // Tab panes
+      .container(style='margin-top: 15px;')
+        .tab-content
+          #home.tab-pane.active(role='tabpanel')
+            img.img-responsive(style='float: left; margin-right: 5px; height: 35px;', src='/libs/flat-ui/img/icons/svg/paper-bag.svg', alt='Clipboard')
+            h4(style='margin-top: 5px;') Content
+            p.help-block About 0 results are found.
+            hr
+            for d in data
+              p #{JSON.stringify(d.title)} 
+              p #{JSON.stringify(d.score)} 
+              p #{JSON.stringify(d.matches)}
+              hr
+          #profile.tab-pane(role='tabpanel')
+            img.img-responsive(style='float: left; margin-right: 5px; height: 35px;', src='/libs/flat-ui/img/icons/svg/paper-bag.svg', alt='Clipboard')
+            h4(style='margin-top: 5px;') Author
+            p.help-block About 0 results are found.
+            hr
+            ul.media-list
+              li.media
+                a.pull-left(href='#')
+                  img.media-object(src='/libs/flat-ui/img/icons/svg/pencils.svg', alt='...')
+                .media-body
+                  h5.media-heading Media heading
+                  p
+                    | Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+              li.media
+                a.pull-left(href='#')
+                  img.media-object(src='/libs/flat-ui/img/icons/svg/pencils.svg', alt='...')
+                .media-body
+                  h5.media-heading Media heading
+                  p
+                    | Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+              li.media
+                a.pull-left(href='#')
+                  img.media-object(src='/libs/flat-ui/img/icons/svg/pencils.svg', alt='...')
+                .media-body
+                  h5.media-heading Media heading
+                  p
+                    | Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+          #messages.tab-pane(role='tabpanel')
+            img.img-responsive(style='float: left; margin-right: 5px; height: 35px;', src='/libs/flat-ui/img/icons/svg/paper-bag.svg', alt='Clipboard')
+            h4(style='margin-top: 5px;') Title
+            p.help-block About 0 results are found.
+            hr
+            ul.media-list
+              li.media
+                a.pull-left(href='#')
+                  img.media-object(src='/libs/flat-ui/img/icons/svg/pencils.svg', alt='...')
+                .media-body
+                  h5.media-heading Media heading
+                  p
+                    | Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+              li.media
+                a.pull-left(href='#')
+                  img.media-object(src='/libs/flat-ui/img/icons/svg/pencils.svg', alt='...')
+                .media-body
+                  h5.media-heading Media heading
+                  p
+                    | Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+              li.media
+                a.pull-left(href='#')
+                  img.media-object(src='/libs/flat-ui/img/icons/svg/pencils.svg', alt='...')
+                .media-body
+                  h5.media-heading Media heading
+                  p
+                    | Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+          #settings.tab-pane(role='tabpanel')
+            img.img-responsive(style='float: left; margin-right: 5px; height: 35px;', src='/libs/flat-ui/img/icons/svg/paper-bag.svg', alt='Clipboard')
+            h4(style='margin-top: 5px;') Subject
+            p.help-block About 0 results are found.
+            hr
+            ul.media-list
+              li.media
+                a.pull-left(href='#')
+                  img.media-object(src='/libs/flat-ui/img/icons/svg/pencils.svg', alt='...')
+                .media-body
+                  h5.media-heading Media heading
+                  p
+                    | Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+              li.media
+                a.pull-left(href='#')
+                  img.media-object(src='/libs/flat-ui/img/icons/svg/pencils.svg', alt='...')
+                .media-body
+                  h5.media-heading Media heading
+                  p
+                    | Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+              li.media
+                a.pull-left(href='#')
+                  img.media-object(src='/libs/flat-ui/img/icons/svg/pencils.svg', alt='...')
+                .media-body
+                  h5.media-heading Media heading
+                  p
+                    | Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.

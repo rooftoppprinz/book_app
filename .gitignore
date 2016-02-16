@@ -2,4 +2,5 @@
 .idea
 node_modules
 public/libs
-public/books
+public/books/*.pdf
+.rebooted
