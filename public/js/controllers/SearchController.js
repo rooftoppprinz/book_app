@@ -1,5 +1,5 @@
 angular.module('BookApp', []).controller('SearchController', function($scope) {
 
-$scope.tagline = "Moon and Back";
+$scope.tagline = "To the Moon and Back";
 
 });

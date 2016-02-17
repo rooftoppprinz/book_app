@@ -1,0 +1,11 @@
+.container(style='margin-top: 25vh;')
+  img.img-responsive(style='float: left; margin-right: 5px; height: 35px;', src='/libs/flat-ui/img/icons/svg/clipboard.svg', alt='Clipboard')
+  h4(style='margin-top: 5px;') Search Book
+  p.help-block Fill in to search for book.
+  form(role='form', action="/search-book",method="post")
+    .form-group
+      .row
+        .col-md-10
+          input.form-control(type='text', name="searchBar", placeholder='Search', required)
+        .col-md-2
+          button.btn.btn-primary.btn-block(type="submit") Search

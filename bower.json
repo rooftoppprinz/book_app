@@ -16,6 +16,7 @@
     "angular": "~1.4.8",
     "jquery": "~2.2.0",
     "angular-route": "~1.4.8",
-    "flat-ui": "~2.2.2"
+    "flat-ui": "~2.2.2",
+    "bootstrap-waitingfor": "~1.2.4"
   }
 }

@@ -12,7 +12,6 @@ var flash = require('connect-flash');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var upload = require('./routes/upload');
 
 var app = express();
 
@@ -38,8 +37,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
-app.use('/', routes);
-app.use('/add', upload);
+app.use('/', routes)
 
 // passport config
 var Account = require('./models/account');
@@ -156,6 +154,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

@@ -7,11 +7,11 @@ block content
     .container
       h1 Add Book
       p.lead Add book details.
-      p.lead.help-block Labels in asterisk(*) are to be filled up.
       if message
-        h4
-          .alert.alert-success #{message}
-      form(role='form', action="/upload",enctype="multipart/form-data",method="post")
+        .alert.alert-success
+          p= message
+      p.lead.help-block Labels in asterisk(*) are to be filled up.
+      form(id='addform',role='form', action="/upload",enctype="multipart/form-data",method="post")
         .row
           .col-md-4
             .form-group
@@ -22,7 +22,7 @@ block content
               input.form-control(type='text', name="title", placeholder='Enter Title', required)
             .form-group
               p Description
-              textarea.form-control(name="comment",form="usrform", placeholder="Enter Description")
+              textarea.form-control(name="desc", placeholder="Enter Description")
             .form-group
               p Author
               input.form-control(type='text', name="author", placeholder='Enter Author')
@@ -49,7 +49,6 @@ block content
               input(type='file', name='upl', accept='.pdf', required)
               p.help-block Choose *.pdf file to upload.
               br
-              button.btn.btn-primary.btn-block(type="submit",style='margin-bottom: 5px;') Save
+              button.btn.btn-primary.btn-block#load(type="submit",style='margin-bottom: 5px;',onclick="waitingDialog.show('Uploading Book')") Save
               a(href='/')
-                button.btn.btn-warning.btn-block(type="button") Cancel
-    
+                button.btn.btn-warning.btn-block(type="button") Return

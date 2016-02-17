@@ -1,6 +1,7 @@
 var express = require('express');
 var passport = require('passport');
 var pdfjs = require('pdfjs-dist');
+var _ = require('lodash');
 var Account = require('../models/account');
 var multer = require('multer');
 var mkdirp = require('mkdirp');
@@ -171,20 +172,20 @@ router.post('/upload', function(req, res) {
               collection.insertMany(toInsert, function(err, r) {
                 console.log("inserted count:" + r.insertedCount)
                 db.close();
+              res.render('add', {
+                user: req.user,
+                message: 'Book uploaded successfully!',
+                uploaded: true
               });
-
+              });
             });
+
           });
           //end of indexing data
         });
       });
     });
     //end of uploading data
-
-    res.render('add', {
-      user: req.user,
-      message: "Successfully saved book."
-    });
   });
 });
 
@@ -267,6 +268,7 @@ router.post('/search-book', function(req, res) {
     var s = this;
     console.log(s.terms);
     MongoClient.connect(url, function(err, db) {
+      console.log('Aggregate------------------------------');
       db.collection('book_index').aggregate([{
         $match: {
           word: {
@@ -439,7 +441,8 @@ router.post('/search-book', function(req, res) {
         }, function(err, doc) {
           book_result.push({
             bookId: e._id,
-            title:doc.title,
+            title: doc.title,
+            description: doc.desc,
             maxScore: maxScore,
             matches: filteredGroupedFoundTerms
           });
@@ -451,8 +454,20 @@ router.post('/search-book', function(req, res) {
             matches: filteredGroupedFoundTerms
           });
           bookidProcessed++;
-          if(bookidProcessed==bookidTotal)
-          {
+          if (bookidProcessed == bookidTotal && req.user) {
+            console.log("Processed----------------------------------");
+            book_result.sort(function(a, b) {
+              var prop = "maxScore";
+              return (a[prop] < b[prop]) ? 1 : ((a[prop] > b[prop]) ? -1 : 0);
+            });
+            res.render('index', {
+              user: req.user,
+              data: book_result
+            });
+            console.log("TOTAL RESULT------------------------------------------------- ------------");
+            console.log(book_result);
+          } else if (bookidProcessed == bookidTotal) {
+            console.log("Processed----------------------------------");
             book_result.sort(function(a, b) {
               var prop = "maxScore";
               return (a[prop] < b[prop]) ? 1 : ((a[prop] > b[prop]) ? -1 : 0);
@@ -462,11 +477,20 @@ router.post('/search-book', function(req, res) {
             });
             console.log("TOTAL RESULT------------------------------------------------- ------------");
             console.log(book_result);
-
           }
         });
       });
     });
+    if (doc.length == 0 && req.user) {
+      res.render('index', {
+        user: req.user,
+        data: null
+      });
+    } else if (doc.length == 0) {
+      res.render('result', {
+        data: null
+      });
+    }
   });
 });
 

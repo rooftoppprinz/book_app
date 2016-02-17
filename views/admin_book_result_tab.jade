@@ -1,0 +1,24 @@
+.container(style='margin-top: 15px;')
+  .tab-content
+    #results.tab-pane.active(role='tabpanel')
+      img.img-responsive(style='float: left; margin-right: 5px; height: 35px;', src='/libs/flat-ui/img/icons/svg/paper-bag.svg', alt='Clipboard')
+      h4(style='margin-top: 5px;') Books Matched
+      if data
+        p.help-block About #{data.length} results found.
+        hr
+        for d in data
+          ul.media-list
+            li.media
+              .row
+                .col-md-10
+                  a.pull-left(href='#')
+                    img.media-object(src='/libs/flat-ui/img/icons/svg/pencils.svg', alt='...')
+                  .media-body
+                    h5.media-heading #{d.title} 
+                    p #{d.description} 
+                .col-md-2
+                  button.btn.btn-warning(type="submit", style='margin-right:7px;') Edit 
+                  button.btn.btn-danger(type="submit") Delete   
+            hr(style='margin-top: 15px')
+      if !data
+        p.help-block No results are found.
