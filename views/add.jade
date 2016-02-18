@@ -11,7 +11,7 @@ block content
         .alert.alert-success
           p= message
       p.lead.help-block Labels in asterisk(*) are to be filled up.
-      form(id='addform',role='form', action="/upload",enctype="multipart/form-data",method="post")
+      form(id='addform',role='form', action="/upload",enctype="multipart/form-data",method="post",onsubmit="waitingDialog.show('Uploading Book')")
         .row
           .col-md-4
             .form-group
@@ -49,6 +49,6 @@ block content
               input(type='file', name='upl', accept='.pdf', required)
               p.help-block Choose *.pdf file to upload.
               br
-              button.btn.btn-primary.btn-block#load(type="submit",style='margin-bottom: 5px;',onclick="waitingDialog.show('Uploading Book')") Save
+              button.btn.btn-primary.btn-block#load(type="submit",style='margin-bottom: 5px;') Save
               a(href='/')
                 button.btn.btn-warning.btn-block(type="button") Return

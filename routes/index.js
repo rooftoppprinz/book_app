@@ -172,11 +172,11 @@ router.post('/upload', function(req, res) {
               collection.insertMany(toInsert, function(err, r) {
                 console.log("inserted count:" + r.insertedCount)
                 db.close();
-              res.render('add', {
-                user: req.user,
-                message: 'Book uploaded successfully!',
-                uploaded: true
-              });
+                res.render('add', {
+                  user: req.user,
+                  message: 'Book uploaded successfully!',
+                  uploaded: true
+                });
               });
             });
 
@@ -454,6 +454,8 @@ router.post('/search-book', function(req, res) {
             matches: filteredGroupedFoundTerms
           });
           bookidProcessed++;
+          console.log("TOTAL RESULT------------------------------------------------- ------------");
+          console.log(book_result);
           if (bookidProcessed == bookidTotal && req.user) {
             console.log("Processed----------------------------------");
             book_result.sort(function(a, b) {
@@ -464,8 +466,6 @@ router.post('/search-book', function(req, res) {
               user: req.user,
               data: book_result
             });
-            console.log("TOTAL RESULT------------------------------------------------- ------------");
-            console.log(book_result);
           } else if (bookidProcessed == bookidTotal) {
             console.log("Processed----------------------------------");
             book_result.sort(function(a, b) {
@@ -475,8 +475,6 @@ router.post('/search-book', function(req, res) {
             res.render('result', {
               data: book_result
             });
-            console.log("TOTAL RESULT------------------------------------------------- ------------");
-            console.log(book_result);
           }
         });
       });

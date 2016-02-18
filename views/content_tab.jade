@@ -11,7 +11,15 @@
             img.media-object(src='/libs/flat-ui/img/icons/svg/pencils.svg', alt='...')
           .media-body
             h5.media-heading #{d.title} 
-            p #{d.description} 
+            p #{d.description}
+            .col-xs-12(style='border: 1px solid #cccccc; overflow-x: scroll; border-radius: 2px;')
+              for match in d.matches
+                for term in match.foundTerms
+                  span.label.label-success 
+                    a(style='cursor: pointer; text-decoration: none; color: #ffffff;') #{term.word}
+                for index in match.indexes
+                  span.label.label-warning index: #{index}
+                span.label.label-primary(style='margin-right: 7px;') page: #{match.page}
         hr(style='margin-top: 15px')
   if !data
     p.help-block No results are found.
