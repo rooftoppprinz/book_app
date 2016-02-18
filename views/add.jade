@@ -46,9 +46,19 @@ block content
             br
             .form-group
               p Add file*
-              input(type='file', name='upl', accept='.pdf', required)
+              img(id='pdfThumb')
+              input.form-control(type='text', id="thumbdata" name="thumbdata")
+              input(id='fileSel',type='file', name='upl', accept='.pdf', required)
               p.help-block Choose *.pdf file to upload.
               br
               button.btn.btn-primary.btn-block#load(type="submit",style='margin-bottom: 5px;') Save
               a(href='/')
                 button.btn.btn-warning.btn-block(type="button") Return
+              script.
+                //- console.log("test");
+                var img = document.getElementById("pdfThumb");
+                var dataholder = document.getElementById("thumbdata");
+                var fileSel = document.getElementById("fileSel");
+                fileSel.addEventListener("change",function(e){
+                  PDFThumbGenerator(img,dataholder,e.target);
+                })

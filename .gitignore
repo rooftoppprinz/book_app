@@ -3,4 +3,5 @@
 node_modules
 public/libs
 public/books/*.pdf
+public/books/*.png
 .rebooted

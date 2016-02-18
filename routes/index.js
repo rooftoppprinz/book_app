@@ -70,9 +70,30 @@ router.post('/upload', function(req, res) {
     }
     MongoClient.connect(url, function(err, db) {
       var collection = db.collection("book_list");
-      collection.insert(req.body, function(err, doc) {
+      collection.insert({
+        isbn: req.body.isbn,
+        title: req.body.title,
+        desc: req.body.desc,
+        author: req.body.author,
+        publs: req.body.publs,
+        pubyear: req.body.pubyear,
+        vol: req.body.vol,
+        edition: req.body.edition,
+        booktyp: req.body.booktyp
+
+      }, function(err, doc) {
         if (err) console.log(err);
         console.log(doc.ops[0]['_id']);
+
+        var regex = /^data:.+\/(.+);base64,(.*)$/;
+
+        var matches = req.body.thumbdata.match(regex);
+        var ext = matches[1];
+        var data = matches[2];
+        var buffer = new Buffer(data, 'base64');
+        fs.writeFileSync('public/books/' + doc.ops[0]['_id'].toString() + ".png", buffer);
+
+
         fs.writeFile('public/books/' + doc.ops[0]['_id'].toString() + '.pdf', req.files[0].buffer, function(err) {
           if (err) console.log(err);
           db.close();
