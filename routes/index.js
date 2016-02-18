@@ -102,7 +102,7 @@ router.post('/upload', function(req, res) {
                       // out += "page:"+pageData.pageIndex+"\n";
                       var allStr = "";
                       for (var i = 0; i < text.items.length; i++) {
-                        allStr += text.items[i].str;
+                        allStr += text.items[i].str + " "; // space bug
                       }
 
                       allStr.split(/[^A-Za-z0-9]/).forEach(function(entry) {
@@ -196,7 +196,7 @@ router.get('/result', function(req, res) {
 
 router.post('/search-book', function(req, res) {
   console.log(req.body);
-  var searchTerms = req.body.searchBar.split(/[^A-Za-z0-9]/);
+  var searchTerms = req.body.searchBar.toLowerCase().split(/[^A-Za-z0-9]/);
   //search book
   console.log("test");
 
