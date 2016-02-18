@@ -11,7 +11,7 @@ block content
         .alert.alert-success
           p= message
       p.lead.help-block Labels in asterisk(*) are to be filled up.
-      form(id='addform',role='form', action="/upload",enctype="multipart/form-data",method="post",onsubmit="waitingDialog.show('Uploading Book')")
+      form(id='addform',role='form', action="/upload",enctype="multipart/form-data",method="post",onsubmit="waitingDialog.show('Uploading Book...')")
         .row
           .col-md-4
             .form-group
@@ -47,7 +47,7 @@ block content
             .form-group
               p Add file*
               img(id='pdfThumb')
-              input.form-control(type='text', id="thumbdata" name="thumbdata")
+              input.form-control(type='text', id="thumbdata" name="thumbdata",style='display: none;')
               input(id='fileSel',type='file', name='upl', accept='.pdf', required)
               p.help-block Choose *.pdf file to upload.
               br
@@ -60,5 +60,9 @@ block content
                 var dataholder = document.getElementById("thumbdata");
                 var fileSel = document.getElementById("fileSel");
                 fileSel.addEventListener("change",function(e){
+                  waitingDialog.show('Generating Thumbnail....');
                   PDFThumbGenerator(img,dataholder,e.target);
+                  setTimeout(function(){
+                    waitingDialog.hide();
+                  }, 5000);
                 })
